@@ -60,11 +60,13 @@ fi
 
 set +e
 run theme-check $flags -o json "$theme_root" > /tmp/results.json
+cat /tmp/results.json
 code=$?
 
 if [[ -n $INPUT_BASE ]]; then
   run git fetch origin $INPUT_BASE
   run git diff --name-only origin/$INPUT_BASE > /tmp/diff.log
+  cat /tmp/diff.log
 fi
 
 set -e
